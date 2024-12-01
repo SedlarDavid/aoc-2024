@@ -1,7 +1,7 @@
 import 'package:aoc_2024/resolver.dart';
 import 'package:collection/collection.dart';
 
-class Part1 with Resolver {
+class Day1 with Resolver {
   @override
   String resolvePartOne() {
     final cols = _processInput();
@@ -37,7 +37,7 @@ class Part1 with Resolver {
     final mapped = secondCol.groupListsBy((element) => element);
 
     var sum = 0;
-    for (var element in firstCol) {
+    for (final element in firstCol) {
       if (!mapped.containsKey(element)) continue;
 
       sum += element * mapped[element]!.length;
@@ -49,7 +49,7 @@ class Part1 with Resolver {
   (List<int>, List<int>) _processInput() {
     final firstCol = <int>[];
     final secondCol = <int>[];
-    for (var line in firstLines) {
+    for (final line in firstLines) {
       final parts = line.split('  ');
       firstCol.add(int.parse(parts[0]));
       secondCol.add(int.parse(parts[1]));

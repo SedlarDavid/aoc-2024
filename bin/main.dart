@@ -1,31 +1,46 @@
+import 'dart:io';
+
 import 'package:aoc_2024/resolver.dart';
 import 'package:args/args.dart';
-import 'package:aoc_2024/parts/parts.dart' as parts;
+// ignore: unused_import
+import 'package:aoc_2024/days/days.dart' as days;
 
 Future<void> main(List<String> args) async {
   final parser = ArgParser()
     ..addOption(
-      'part',
-      abbr: 'p',
-      defaultsTo: '1',
+      'day',
+      defaultsTo: '0',
     );
 
-  final part = int.tryParse(parser.parse(args).option('part') ?? '');
+  final day = int.tryParse(parser.parse(args).option('day') ?? '');
 
-  if (part == null) {
+  if (day == null) {
     throw ArgumentError('Invalid part argument');
   }
 
-  var resolver = await createResolver(part);
+  if (day == 0) {
+    final days = getCompletedDays();
+    for (var i = 1; i <= days; i++) {
+      stdout.writeln('Day $i');
+      await _resolveDay(i);
+    }
+  } else {
+    await _resolveDay(day);
+  }
+}
+
+Future<void> _resolveDay(int day) async {
+  final resolver = await createResolver(day);
   if (resolver == null) {
     throw Exception('Resolver could not be created');
   }
-  await resolver.init(part);
+  await resolver.init(day);
 
-  print(
-    'Part one: ' + resolver.resolvePartOne(),
-  );
-  print(
-    'Part two: ' + resolver.resolvePartTwo(),
-  );
+  stdout
+    ..writeln(
+      'Part one: ${resolver.resolvePartOne()}',
+    )
+    ..writeln(
+      'Part two: ${resolver.resolvePartTwo()}',
+    );
 }
