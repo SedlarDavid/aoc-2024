@@ -8,7 +8,7 @@
       "name": "Dart & Flutter",
       "request": "launch",
       "type": "dart",
-      "args": ["part", "1"]
+      "args": ["part", "2"]
     }
   ]
 }

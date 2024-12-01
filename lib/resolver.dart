@@ -2,17 +2,19 @@ import 'dart:mirrors';
 import 'dart:io';
 
 mixin Resolver {
-  String get firstInput => _first;
-  String get secondInput => _second;
-  String _first = '';
-  String _second = '';
+  String get firstInput => _first.join('\n');
+  List<String> get firstLines => _first;
+  String get secondInput => _second.join('\n');
+  List<String> get secondLines => _second;
+  List<String> _first = [];
+  List<String> _second = [];
 
   Future<void> init(int part) async {
     final padded = part > 9 ? part.toString() : '0$part';
     _first = await File(Directory.current.path + '/lib/parts/$padded/01')
-        .readAsString();
+        .readAsLines();
     _second = await File(Directory.current.path + '/lib/parts/$padded/02')
-        .readAsString();
+        .readAsLines();
   }
 
   String resolvePartOne();
