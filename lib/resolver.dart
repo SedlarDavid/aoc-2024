@@ -14,11 +14,11 @@ mixin Resolver {
   Future<void> init(int day) async {
     final padded = day > 9 ? day.toString() : '0$day';
     try {
-      _first = await File('${Directory.current.path}/lib/days/$padded/$padded')
+      _first = await File('${Directory.current.path}/lib/days/$padded/01')
           .readAsLines();
     } catch (_) {}
     try {
-      _second = await File('${Directory.current.path}/lib/days/$padded/$padded')
+      _second = await File('${Directory.current.path}/lib/days/$padded/02')
           .readAsLines();
     } catch (_) {}
   }
