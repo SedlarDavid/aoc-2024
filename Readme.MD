@@ -40,5 +40,5 @@ This project is open source and available under the [MIT License](LICENSE).
 ## ✍️ Author feedback for future references
 
 - Day 1 - simple sort and groupBy
-- Day 1 - asc, desc list processing
+- Day 2 - asc, desc list processing
 - Day 3 - text processing via regex
