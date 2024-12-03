@@ -4,22 +4,32 @@ import 'dart:io';
 import 'package:collection/collection.dart';
 
 mixin Resolver {
-  String get firstInput => _first.join('\n');
-  List<String> get firstLines => _first;
-  String get secondInput => _second.join('\n');
-  List<String> get secondLines => _second;
-  List<String> _first = [];
-  List<String> _second = [];
+  String get firstAsLinesString => _firstLines.join('\n');
+  String get firstAsString => _firstAsString;
+  List<String> get firstLines => _firstLines;
+  String get secondAsLinesString => _secondLines.join('\n');
+  String get secondAsString => _secondAsString;
+  List<String> get secondLines => _secondLines;
+  List<String> _firstLines = [];
+  String _firstAsString = '';
+  List<String> _secondLines = [];
+  String _secondAsString = '';
 
   Future<void> init(int day) async {
     final padded = day > 9 ? day.toString() : '0$day';
     try {
-      _first = await File('${Directory.current.path}/lib/days/$padded/01')
+      _firstLines = await File('${Directory.current.path}/lib/days/$padded/01')
           .readAsLines();
+      _firstAsString =
+          await File('${Directory.current.path}/lib/days/$padded/01')
+              .readAsString();
     } catch (_) {}
     try {
-      _second = await File('${Directory.current.path}/lib/days/$padded/02')
+      _secondLines = await File('${Directory.current.path}/lib/days/$padded/02')
           .readAsLines();
+      _secondAsString =
+          await File('${Directory.current.path}/lib/days/$padded/02')
+              .readAsString();
     } catch (_) {}
   }
 
