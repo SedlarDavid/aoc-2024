@@ -33,10 +33,6 @@ Advent of Code is a series of small programming puzzles for a variety of skill l
 
 - **Dart**: Primary programming language for solving the puzzles.
 
-## 🤝 Contributing
-
-Feel free to submit issues or pull requests if you'd like to contribute or improve the solutions.
-
 ## 📜 License
 
 This project is open source and available under the [MIT License](LICENSE).
