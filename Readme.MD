@@ -42,3 +42,5 @@ This project is open source and available under the [MIT License](LICENSE).
 - Day 1 - simple sort and groupBy
 - Day 2 - asc, desc list processing
 - Day 3 - text processing via regex
+- Day 3 - recursion
+- Day 3 - set operations
